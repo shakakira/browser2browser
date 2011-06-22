@@ -1,0 +1,32 @@
+<!doctype html>
+<html>
+<head>
+<title>client</title>
+<script src="/socket.io/socket.io.js"></script>
+<script src="/browser2browser/client.js"></script>
+<script>
+var search = location.search;
+var id = 'server';
+if (search.length > 0) {
+  id = search.substring(1);
+}
+
+b2b.connect(id);
+
+function handleResponse(obj) {
+  console.log(obj);
+}
+
+b2b.register('test', handleResponse);
+
+function sendToServer() {
+  b2b.send('server', 'test', {'abc': 123});
+}
+</script>
+
+</head>
+<body>
+	<a href="#" onclick="sendToServer(); return false;">send to server</a>
+</body>
+</html>
+
