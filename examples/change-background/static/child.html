@@ -1,0 +1,21 @@
+<!doctype html>
+<html>
+<head>
+<title>child</title>
+<script src="/socket.io/socket.io.js"></script>
+<script src="/browser2browser/client.js"></script>
+<script>
+b2b.connect('child');
+
+function changeBackgroundColor(obj) {
+  document.body.style.backgroundColor = obj.color;
+}
+
+b2b.register('changeBackgroundColor', changeBackgroundColor);
+</script>
+
+</head>
+<body>
+</body>
+</html>
+
